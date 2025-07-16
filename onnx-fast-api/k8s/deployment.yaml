@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: llm-onnx
+  namespace: llm-onnx
+  labels:
+    app: llm-onnx
+    version: v1
+    environment: local
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: llm-onnx
+  template:
+    metadata:
+      labels:
+        app: llm-onnx
+    spec:
+      containers:
+      - name: llm-api-onnx
+        image: llm-api-onnx
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8000
+        resources:
+          requests:
+            cpu: "500m"
+            memory: "1Gi"
+          limits:
+            cpu: "1"
+            memory: "2Gi"

@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: llm-onnx
+  labels:
+    app: llm-onnx
+    version: v1
+    environment: local
